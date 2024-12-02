@@ -79,70 +79,70 @@
 	.contact-form {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: $spacing-lg;
 
 		.success-message {
-			background: #4caf50;
+			background: $success-color;
 			color: white;
-			padding: 1rem;
-			border-radius: 5px;
+			padding: $spacing-md;
+			border-radius: $border-radius;
 			text-align: center;
 		}
 
 		.error-message {
-			background: #f44336;
+			background: $error-color;
 			color: white;
-			padding: 1rem;
-			border-radius: 5px;
+			padding: $spacing-md;
+			border-radius: $border-radius;
 			text-align: center;
 		}
 
 		.form-group {
 			display: flex;
 			flex-direction: column;
-			gap: 0.5rem;
+			gap: $spacing-xs;
 
 			label {
-				color: #2c3e50;
+				color: $text-color;
 				font-weight: 500;
 			}
 
 			input,
 			textarea {
-				padding: 0.8rem;
-				border: 1px solid #ddd;
-				border-radius: 5px;
+				padding: $spacing-sm;
+				border: 1px solid $border-color;
+				border-radius: $border-radius;
 				font-family: inherit;
-				transition: border-color 0.3s ease;
+				transition: border-color $transition-default;
 
 				&:focus {
 					outline: none;
-					border-color: #e67e22;
+					border-color: $primary-color;
 				}
 
 				&:disabled {
-					background: #f5f5f5;
+					background: $background-light;
 					cursor: not-allowed;
 				}
 			}
 		}
 
 		button {
-			background: #e67e22;
+			background: $primary-color;
 			color: white;
-			padding: 1rem;
+			padding: $spacing-md;
 			border: none;
-			border-radius: 5px;
+			border-radius: $border-radius;
 			font-weight: 500;
 			cursor: pointer;
-			transition: background-color 0.3s ease;
+			transition: background-color $transition-default;
 
 			&:hover:not(:disabled) {
-				background: darken(#e67e22, 10%);
+				background: $primary-dark;
 			}
 
 			&:disabled {
-				background: #ccc;
+				background: $disabled-color;
 				cursor: not-allowed;
 			}
 		}

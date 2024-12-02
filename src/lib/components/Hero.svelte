@@ -131,7 +131,7 @@
 			}
   
 			&:hover {
-			  background-color: darken(#FF6B35, 10%);
+			  background-color: $primary-dark;
 			  transform: translateY(-2px);
   
 			  .arrow {

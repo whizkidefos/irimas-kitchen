@@ -1,16 +1,30 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	import Header from '$lib/components/Header.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+	import { onMount } from 'svelte';
 	import '../styles/global.scss';
+
+	let Header: any;
+	let Footer: any;
+
+	onMount(async () => {
+		// Lazy load components
+		const headerModule = await import('$lib/components/Header.svelte');
+		const footerModule = await import('$lib/components/Footer.svelte');
+		Header = headerModule.default;
+		Footer = footerModule.default;
+	});
 </script>
 
 <div class="app">
-	<Header />
+	{#if Header}
+		<svelte:component this={Header} />
+	{/if}
 	<main transition:fade={{ duration: 300 }}>
 		<slot />
 	</main>
-	<Footer />
+	{#if Footer}
+		<svelte:component this={Footer} />
+	{/if}
 </div>
 
 <style lang="scss">
@@ -22,11 +36,15 @@
 
 	main {
 		flex: 1;
-		margin-top: 4rem;
-		padding: 2rem;
-		// max-width: 1200px;
+		margin-top: clamp(2rem, 4vw, 4rem); // Responsive margin
+		padding: clamp(1rem, 2vw, 2rem); // Responsive padding
 		width: 100%;
 		margin-left: auto;
 		margin-right: auto;
+		
+		@media (max-width: 768px) {
+			margin-top: 2rem;
+			padding: 1rem;
+		}
 	}
 </style>
