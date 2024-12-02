@@ -13,39 +13,22 @@ export const fadeIn = {
   delay: 300
 };
 
-export function flyUp(
-  node: Element,
-  params: FlyParams = { y: 50, duration: 800, delay: 0 }
-): TransitionConfig {
-  const style = getComputedStyle(node);
-  const transform = style.transform === 'none' ? '' : style.transform;
+export const flyUp = (node: HTMLElement, params: FlyParams = {}): TransitionConfig => {
+  const { 
+    y = 30, 
+    duration = 800, 
+    delay = 500 
+  } = params;
 
   return {
-    delay: params.delay,
-    duration: params.duration || 800,
-    easing: cubicOut,
-    css: (t, u) => `
-      transform: ${transform} translate(${(params.x || 0) * u}px, ${(params.y || 0) * u}px);
-      opacity: ${t}
-    `
-  };
-}
-
-export const parallaxScroll = (node: HTMLElement, speed: number = 0.5): { destroy(): void } => {
-  let initialOffset = 0;
-  
-  function updateParallax() {
-    const scrolled = window.pageYOffset;
-    const parallaxOffset = scrolled * speed;
-    node.style.transform = `translateY(${parallaxOffset}px)`;
-  }
-
-  window.addEventListener('scroll', updateParallax);
-  updateParallax();
-
-  return {
-    destroy() {
-      window.removeEventListener('scroll', updateParallax);
+    delay,
+    duration,
+    css: (t) => {
+      const eased = cubicOut(t);
+      return `
+        transform: translateY(${(1 - eased) * y}px);
+        opacity: ${eased};
+      `;
     }
   };
 };

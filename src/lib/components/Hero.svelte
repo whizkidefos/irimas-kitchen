@@ -1,7 +1,6 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import Typewriter from 'svelte-typewriter';
-	import { parallaxScroll, flyUp } from '$lib/utils/animations';
+	import { flyUp } from '$lib/utils/animations';
 	
 	export let title: string;
 	export let subtitle: string;
@@ -9,15 +8,11 @@
 	export let cta = { text: '', link: '' };
   
 	let heroElement: HTMLElement;
-	let imageElement: HTMLElement;
 	let contentElement: HTMLElement;
+	let imageElement: HTMLElement;
+</script>
   
-	onMount(() => {
-	  parallaxScroll(imageElement, 0.5);
-	});
-  </script>
-  
-  <div class="hero" bind:this={heroElement}>
+<div class="hero" bind:this={heroElement}>
 	<div 
 	  class="hero-background" 
 	  bind:this={imageElement}
@@ -46,9 +41,9 @@
 		{/if}
 	  </div>
 	</div>
-  </div>
+</div>
   
-  <style lang="scss">
+<style lang="scss">
 	.hero {
 	  height: 100vh;
 	  position: relative;
@@ -66,7 +61,6 @@
 		height: 120%;
 		background-size: cover;
 		background-position: center;
-		will-change: transform;
 	  }
   
 	  .overlay {
@@ -164,4 +158,4 @@
 		}
 	  }
 	}
-  </style>
+</style>

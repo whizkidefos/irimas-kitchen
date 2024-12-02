@@ -35,7 +35,6 @@
 		"gsap": "^3.12.5",
 		"locomotive-scroll": "^4.1.4",
 		"resend": "^4.0.1",
-		"svelte-parallax": "^0.6.0",
 		"svelte-typewriter": "^3.2.3"
 	}
 }
