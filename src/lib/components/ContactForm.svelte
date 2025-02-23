@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
 	import { menuItems } from '$lib/data/menu';
-	
+	import type { ContactFormData } from '$lib/types/contact';
+
 	let name = '';
 	let email = '';
 	let subject = '';
@@ -10,8 +11,8 @@
 	let selectedItems: string[] = [];
 	let specialInstructions = '';
 	let sending = false;
-	let success = false;
 	let error = '';
+	let success = '';
 
 	// Group menu items by category
 	const menuItemsByCategory = menuItems.reduce((acc, item) => {
@@ -26,14 +27,17 @@
 		event.preventDefault();
 		sending = true;
 		error = '';
+		success = '';
 
 		try {
-			const formData = {
+			const formData: ContactFormData = {
 				name,
 				email,
-				subject: isOrder ? 'Food Order' : subject,
-				message: isOrder ? `Selected Items:\n${selectedItems.join('\n')}\n\nSpecial Instructions:\n${specialInstructions}\n\n${message}` : message,
-				...(isOrder && { isOrder, selectedItems, specialInstructions })
+				subject: isOrder ? 'New Order' : subject,
+				message,
+				isOrder,
+				selectedItems: isOrder ? selectedItems : undefined,
+				specialInstructions: isOrder ? specialInstructions : undefined
 			};
 
 			const response = await fetch('/api/contact', {
@@ -44,9 +48,14 @@
 				body: JSON.stringify(formData)
 			});
 
-			if (!response.ok) throw new Error('Failed to send message');
+			const result = await response.json();
 
-			success = true;
+			if (!response.ok) {
+				throw new Error(result.error || 'Failed to send message');
+			}
+
+			success = 'Message sent successfully!';
+			// Reset form
 			name = '';
 			email = '';
 			subject = '';
@@ -55,7 +64,7 @@
 			selectedItems = [];
 			specialInstructions = '';
 		} catch (err) {
-			error = 'Failed to send message. Please try again.';
+			error = err instanceof Error ? err.message : 'An error occurred';
 		} finally {
 			sending = false;
 		}
@@ -64,21 +73,25 @@
 
 <form on:submit={handleSubmit} class="contact-form">
 	{#if success}
-		<div class="success-message" in:fade>
-			Thank you for your {isOrder ? 'order' : 'message'}! We'll get back to you soon.
+		<div class="success-message" in:slide>
+			{success}
 		</div>
 	{/if}
 
 	{#if error}
-		<div class="error-message" in:fade>
+		<div class="error-message" in:slide>
 			{error}
 		</div>
 	{/if}
 
 	<div class="form-group">
-		<label>
-			<input type="checkbox" bind:checked={isOrder} disabled={sending} />
-			I want to place an order
+		<label class="checkbox-label">
+			<input
+				type="checkbox"
+				bind:checked={isOrder}
+				disabled={sending}
+			/>
+			<span>I want to place an order</span>
 		</label>
 	</div>
 
@@ -93,12 +106,12 @@
 	</div>
 
 	{#if !isOrder}
-		<div class="form-group">
+		<div class="form-group" transition:slide>
 			<label for="subject">Subject</label>
 			<input type="text" id="subject" bind:value={subject} required disabled={sending} />
 		</div>
 	{:else}
-		<div class="menu-selection">
+		<div class="menu-selection" transition:slide>
 			<h3>Select Menu Items</h3>
 			{#each Object.entries(menuItemsByCategory) as [category, items]}
 				<div class="category-section">
@@ -123,14 +136,14 @@
 			{/each}
 		</div>
 
-		<div class="form-group">
+		<div class="form-group" transition:slide>
 			<label for="specialInstructions">Special Instructions</label>
 			<textarea
 				id="specialInstructions"
 				bind:value={specialInstructions}
-				rows="3"
-				disabled={sending}
+				rows="4"
 				placeholder="Any special requests or dietary requirements?"
+				disabled={sending}
 			></textarea>
 		</div>
 	{/if}
@@ -217,6 +230,31 @@
 			textarea {
 				min-height: 120px;
 				resize: vertical;
+			}
+		}
+
+		.checkbox-label {
+			display: flex !important;
+			align-items: center;
+			gap: $spacing-sm;
+			cursor: pointer;
+			margin-bottom: 0;
+
+			input[type="checkbox"] {
+				width: 18px;
+				height: 18px;
+				margin: 0;
+				cursor: pointer;
+
+				&:checked {
+					accent-color: $primary-color;
+				}
+			}
+
+			span {
+				font-size: $font-size-base;
+				color: $text-primary;
+				user-select: none;
 			}
 		}
 
