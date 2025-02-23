@@ -32,7 +32,6 @@
 	subtitle="Discover our delicious Nigerian dishes made with love and tradition"
 	image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80"
 	cta={{ text: "Order Now", link: "/contact" }}
-	customClass="hero"
 />
 
 <div class="menu-page bg-secondary" in:fade={{ duration: 500 }}>
@@ -68,120 +67,51 @@
 </div>
 
 <style lang="scss">
-	@use '../../styles/variables' as *;
+	@use '../../styles/variables' as v;
 
 	.menu-page {
-		padding: $spacing-2xl 0;
-		min-height: 100vh;
-		background-color: $bg-secondary;
+		padding: v.$spacing-2xl 0;
 	}
 
 	.menu-section {
-		margin-bottom: $spacing-2xl;
-
-		h2 {
-			position: relative;
-			color: $text-primary;
-			padding-bottom: $spacing-sm;
-			
-			&::after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				left: 0;
-				width: 60px;
-				height: 3px;
-				background-color: $primary-color;
-			}
-		}
+		margin-bottom: v.$spacing-2xl;
 	}
 
 	.menu-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		gap: $spacing-lg;
-		margin-top: $spacing-lg;
+		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+		gap: v.$spacing-lg;
+		padding: v.$spacing-md;
 	}
 
 	.menu-item {
-		transition: all 0.3s ease;
-		cursor: pointer;
+		background: v.$bg-primary;
+		padding: v.$spacing-lg;
+		border-radius: v.$border-radius-lg;
+		box-shadow: v.$shadow-md;
+		transition: transform v.$transition-normal, box-shadow v.$transition-normal;
 
 		&:hover {
-			color: $primary-color;
 			transform: translateY(-2px);
-		}
-
-		&.active {
-			color: $primary-color;
-			font-weight: 600;
+			box-shadow: v.$shadow-lg;
 		}
 
 		.item-name {
-			font-size: $font-size-lg;
-			margin-bottom: $spacing-xs;
-			transition: color 0.3s ease;
+			font-family: v.$font-heading;
+			font-size: v.$font-size-lg;
+			margin-bottom: v.$spacing-xs;
+			color: v.$text-primary;
+		}
 
-			&:hover {
-				color: $primary-color;
-			}
+		.item-description {
+			color: v.$text-secondary;
+			font-size: v.$font-size-base;
 		}
 	}
 
-	.menu-item-content {
-		padding: $spacing-lg;
-
-		h3 {
-			color: $text-primary;
-			font-size: $font-size-xl;
-		}
-
-		.description {
-			font-size: $font-size-base;
-			min-height: 3rem;
-		}
-
-		.btn {
-			display: inline-flex;
-			align-items: center;
-			gap: $spacing-xs;
-			background-color: $primary-color;
-			color: white;
-			padding: $spacing-sm $spacing-md;
-			border-radius: 4px;
-			text-decoration: none;
-			transition: background-color 0.2s ease;
-			
-			svg {
-				transition: transform $transition-fast;
-			}
-
-			&:hover {
-				background-color: $primary-dark;
-				
-				svg {
-					transform: translateX(4px);
-				}
-			}
-		}
-	}
-
-	@media (max-width: $breakpoint-md) {
-		.menu-page {
-			padding: $spacing-xl 0;
-		}
-
+	@media (max-width: v.$breakpoint-sm) {
 		.menu-grid {
 			grid-template-columns: 1fr;
-			gap: $spacing-md;
 		}
-
-		.menu-item-content {
-			padding: $spacing-md;
-		}
-	}
-
-	.hero {
-		margin-bottom: $spacing-2xl;
 	}
 </style>

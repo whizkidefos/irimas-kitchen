@@ -166,63 +166,60 @@
 </form>
 
 <style lang="scss">
-	@use '../../styles/variables';
+	@use '../../styles/variables' as v;
 
 	.contact-form {
 		display: flex;
 		flex-direction: column;
-		gap: $spacing-lg;
-		max-width: 800px;
+		gap: v.$spacing-md;
+		max-width: 600px;
 		margin: 0 auto;
+		padding: v.$spacing-lg;
+		background-color: v.$bg-primary;
+		border-radius: v.$border-radius-lg;
+		box-shadow: v.$shadow-md;
 
 		.success-message {
-			background: $success;
-			color: $text-light;
-			padding: $spacing-md;
-			border-radius: $border-radius-md;
+			background: v.$success;
+			color: v.$text-light;
+			padding: v.$spacing-md;
+			border-radius: v.$border-radius-md;
 			text-align: center;
 		}
 
 		.error-message {
-			background: $error;
-			color: $text-light;
-			padding: $spacing-md;
-			border-radius: $border-radius-md;
+			background: v.$error;
+			color: v.$text-light;
+			padding: v.$spacing-md;
+			border-radius: v.$border-radius-md;
 			text-align: center;
 		}
 
 		.form-group {
 			display: flex;
 			flex-direction: column;
-			gap: $spacing-xs;
+			gap: v.$spacing-xs;
 
 			label {
-				display: block;
-				margin-bottom: $spacing-xs;
-				color: $text-primary;
-				font-family: $font-primary;
 				font-weight: 600;
+				color: v.$text-primary;
 			}
 
-			input, textarea {
-				width: 100%;
-				padding: $spacing-md;
-				border: 1px solid $border-color;
-				border-radius: $border-radius-md;
-				font-family: $font-primary;
-				font-size: $font-size-base;
-				color: $text-primary;
-				background-color: $bg-primary;
-				transition: all 0.3s ease;
+			input,
+			textarea {
+				padding: v.$spacing-sm v.$spacing-md;
+				border: 1px solid v.$border-color;
+				border-radius: v.$border-radius-md;
+				font-family: v.$font-primary;
+				transition: border-color v.$transition-fast;
 
 				&:focus {
 					outline: none;
-					border-color: $primary-color;
+					border-color: v.$primary-color;
 				}
 
 				&:disabled {
-					background-color: $bg-secondary;
-					border-color: $border-color-light;
+					background: v.$text-lighter;
 					cursor: not-allowed;
 				}
 			}
@@ -234,150 +231,115 @@
 		}
 
 		.checkbox-label {
-			display: flex !important;
+			display: flex;
 			align-items: center;
-			gap: $spacing-sm;
+			gap: v.$spacing-sm;
 			cursor: pointer;
-			margin-bottom: 0;
 
 			input[type="checkbox"] {
-				width: 18px;
-				height: 18px;
+				width: auto;
 				margin: 0;
-				cursor: pointer;
-
-				&:checked {
-					accent-color: $primary-color;
-				}
-			}
-
-			span {
-				font-size: $font-size-base;
-				color: $text-primary;
-				user-select: none;
 			}
 		}
 
 		.menu-selection {
-			background: $bg-secondary;
-			padding: $spacing-lg;
-			border-radius: $border-radius-md;
-			margin-bottom: $spacing-lg;
-			
+			margin: v.$spacing-md 0;
+
 			h3 {
-				color: $text-primary;
-				margin-bottom: $spacing-md;
-				font-size: $font-size-xl;
-				font-weight: 600;
+				margin-bottom: v.$spacing-md;
+				color: v.$text-primary;
 			}
 
 			.category-section {
-				margin-bottom: $spacing-xl;
-
-				&:last-child {
-					margin-bottom: 0;
-				}
+				margin-bottom: v.$spacing-lg;
 
 				h4 {
-					color: $primary-color;
-					margin-bottom: $spacing-md;
-					font-size: $font-size-lg;
-					font-weight: 600;
+					margin-bottom: v.$spacing-sm;
+					color: v.$text-secondary;
+				}
+			}
+
+			.menu-items-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+				gap: v.$spacing-md;
+			}
+
+			.menu-item-checkbox {
+				display: flex;
+				flex-direction: column;
+				gap: v.$spacing-xs;
+				padding: v.$spacing-md;
+				border: 1px solid v.$border-color;
+				border-radius: v.$border-radius-sm;
+				transition: all v.$transition-fast;
+				cursor: pointer;
+
+				&:hover {
+					background-color: v.$bg-secondary;
+				}
+
+				.checkbox-row {
 					display: flex;
-					align-items: center;
-					gap: $spacing-xs;
+					align-items: flex-start;
+					gap: v.$spacing-sm;
 
-					&::after {
-						content: '';
-						flex: 1;
-						height: 2px;
-						background: linear-gradient(to right, $primary-color, transparent);
-						margin-left: $spacing-sm;
+					input[type="checkbox"] {
+						margin-top: 0.3rem;
+						width: 16px;
+						height: 16px;
+					}
+
+					.item-name {
+						font-weight: 600;
+						color: v.$text-primary;
+						line-height: v.$line-height-normal;
 					}
 				}
 
-				.menu-items-grid {
-					display: grid;
-					grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-					gap: $spacing-md;
+				.item-description {
+					font-size: v.$font-size-sm;
+					color: v.$text-secondary;
+					line-height: v.$line-height-normal;
 				}
+			}
+		}
 
-				.menu-item-checkbox {
-					background: $bg-primary;
-					padding: $spacing-md;
-					border-radius: $border-radius-md;
-					display: flex;
-					flex-direction: column;
-					gap: $spacing-xs;
-					cursor: pointer;
-					transition: transform 0.2s ease, box-shadow 0.2s ease;
+		.alert {
+			padding: v.$spacing-sm v.$spacing-md;
+			border-radius: v.$border-radius-md;
+			font-weight: 500;
 
-					&:hover {
-						transform: translateY(-2px);
-						box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-					}
+			&.alert-error {
+				background-color: #fee2e2;
+				color: #991b1b;
+			}
 
-					.checkbox-row {
-						display: flex;
-						align-items: center;
-						gap: $spacing-xs;
-
-						input[type="checkbox"] {
-							width: 18px;
-							height: 18px;
-							margin: 0;
-							cursor: pointer;
-
-							&:checked {
-								accent-color: $primary-color;
-							}
-						}
-
-						.item-name {
-							font-weight: 600;
-							color: $text-primary;
-						}
-					}
-
-					.item-description {
-						color: $text-secondary;
-						font-size: $font-size-sm;
-						line-height: 1.4;
-						margin-left: calc(18px + #{$spacing-xs});
-					}
-				}
+			&.alert-success {
+				background-color: #dcfce7;
+				color: #166534;
 			}
 		}
 
 		button {
-			background: $primary-color;
-			color: $text-light;
-			padding: $spacing-md $spacing-lg;
+			background: v.$primary-color;
+			color: v.$text-light;
+			padding: v.$spacing-md v.$spacing-lg;
 			border: none;
-			border-radius: $border-radius-md;
-			font-family: $font-primary;
+			border-radius: v.$border-radius-md;
+			font-family: v.$font-primary;
 			font-weight: 700;
-			font-size: $font-size-base;
+			font-size: v.$font-size-base;
 			cursor: pointer;
-			transition: background-color $transition-normal;
+			transition: background-color v.$transition-fast;
 
 			&:hover:not(:disabled) {
-				background: $primary-dark;
+				background: v.$primary-dark;
 			}
 
 			&:disabled {
-				background: $text-lighter;
+				background: v.$text-lighter;
 				cursor: not-allowed;
-			}
-		}
-	}
-
-	@media (max-width: $breakpoint-md) {
-		.contact-form {
-			.menu-selection {
-				.menu-items-grid {
-					grid-template-columns: 1fr;
-				}
 			}
 		}
 	}
