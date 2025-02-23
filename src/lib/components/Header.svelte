@@ -34,7 +34,10 @@
   <header class:scrolled={isScrolled}>
 	<nav>
 	  <div class="logo">
-		<a href="/" on:click={closeMenu}>Irima's Kitchen</a>
+		<a href="/" on:click={closeMenu}>
+			<img src="/logo.svg" alt="Irima's Kitchen Logo" />
+			<span class="font-primary">Irima's <span class="kitchen">Kitchen</span></span>
+		</a>
 	  </div>
   
 	  <button 
@@ -101,17 +104,27 @@
 	  position: relative;
 	}
   
-	.logo a {
-	  font-family: 'Cormorant Garamond', serif;
-	  font-size: 1.8rem;
-	  font-weight: 700;
-	  color: var(--primary-color);
-	  text-decoration: none;
-	  transition: color 0.3s ease;
-	  
-	  &:hover {
-		color: var(--accent-color);
-	  }
+	.logo {
+		a {
+			display: flex;
+			align-items: center;
+			gap: $spacing-sm;
+			text-decoration: none;
+			color: $text-primary;
+			font-size: $font-size-xl;
+			font-weight: 700;
+			font-family: 'Lato', sans-serif;
+
+			img {
+				width: 32px;
+				height: 32px;
+				object-fit: contain;
+			}
+
+			.kitchen {
+				color: $primary-color;
+			}
+		}
 	}
   
 	.nav-links {

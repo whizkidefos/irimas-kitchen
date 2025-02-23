@@ -44,6 +44,8 @@
 </div>
   
 <style lang="scss">
+	@import '../../styles/variables';
+
 	.hero {
 	  height: 100vh;
 	  position: relative;
@@ -71,8 +73,8 @@
 		height: 100%;
 		background: linear-gradient(
 		  to bottom,
-		  rgba(0, 0, 0, 0.5),
-		  rgba(0, 0, 0, 0.7)
+		  rgba(0, 0, 0, 0.6),
+		  rgba(0, 0, 0, 0.8)
 		);
 	  }
   
@@ -95,14 +97,15 @@
 		  margin-bottom: 1.5rem;
 		  font-weight: 700;
 		  line-height: 1.1;
-		  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+		  color: $primary-color;
+		  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
 		}
   
 		p {
-		  font-size: clamp(1.1rem, 4vw, 1.5rem);
+		  font-size: clamp(1.1rem, 3vw, 1.5rem);
 		  margin-bottom: 2rem;
-		  opacity: 0.9;
-		  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+		  line-height: 1.6;
+		  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 		}
   
 		.cta-wrapper {

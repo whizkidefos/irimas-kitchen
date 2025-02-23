@@ -51,19 +51,33 @@ export async function POST({ request, getClientAddress }) {
             return json({ error: validation.errors.join(', ') }, { status: 400 });
         }
 
-        const { name, email, subject, message } = data;
+        const { name, email, subject, message, isOrder, selectedItems, specialInstructions } = data;
+
+        // Build email content based on whether it's an order or general inquiry
+        let emailContent = `
+            <h2>New ${isOrder ? 'Order' : 'Message'} from ${name}</h2>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Subject:</strong> ${subject}</p>
+            ${isOrder ? `
+                <h3>Order Details</h3>
+                <h4>Selected Items:</h4>
+                <ul>
+                    ${selectedItems?.map(item => `<li>${item}</li>`).join('') || 'No items selected'}
+                </ul>
+                ${specialInstructions ? `
+                    <h4>Special Instructions:</h4>
+                    <p>${specialInstructions}</p>
+                ` : ''}
+            ` : ''}
+            <p><strong>Message:</strong></p>
+            <p>${message}</p>
+        `;
 
         await resend.emails.send({
             from: process.env.EMAIL_FROM || 'Irima\'s Kitchen <contact@irimaskitchen.com>',
             to: process.env.EMAIL_TO || 'irimaskitchen@gmail.com',
-            subject: `New Contact Form Submission: ${subject}`,
-            html: `
-                <h2>New message from ${name}</h2>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Subject:</strong> ${subject}</p>
-                <p><strong>Message:</strong></p>
-                <p>${message}</p>
-            `
+            subject: `New ${isOrder ? 'Order' : 'Contact Form Submission'}: ${subject}`,
+            html: emailContent
         });
 
         return json({ success: true, message: 'Email sent successfully' });

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Pot body -->
+    <path d="M4 12C4 10.8954 4.89543 10 6 10H26C27.1046 10 28 10.8954 28 12V24C28 25.1046 27.1046 26 26 26H6C4.89543 26 4 25.1046 4 24V12Z" fill="#E65100"/>
+    <!-- Pot handles -->
+    <path d="M2 14H4V22H2V14Z" fill="#E65100"/>
+    <path d="M28 14H30V22H28V14Z" fill="#E65100"/>
+    <!-- Steam -->
+    <path d="M12 4C12 4 13 7 13 8C13 9.10457 12.1046 10 11 10C9.89543 10 9 9.10457 9 8C9 7 10 4 10 4" stroke="#E65100" stroke-width="2" stroke-linecap="round"/>
+    <path d="M18 2C18 2 19 5 19 6C19 7.10457 18.1046 8 17 8C15.8954 8 15 7.10457 15 6C15 5 16 2 16 2" stroke="#E65100" stroke-width="2" stroke-linecap="round"/>
+    <path d="M24 4C24 4 25 7 25 8C25 9.10457 24.1046 10 23 10C21.8954 10 21 9.10457 21 8C21 7 22 4 22 4" stroke="#E65100" stroke-width="2" stroke-linecap="round"/>
+</svg>

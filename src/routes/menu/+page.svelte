@@ -1,151 +1,284 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
+	import Hero from '$lib/components/Hero.svelte';
 
 	interface MenuItem {
 		name: string;
 		description: string;
-		price: string;
 		category: string;
 	}
 
 	const menuItems: MenuItem[] = [
 		{
-			name: 'Jollof Rice Special',
-			description: 'Nigerian-style jollof rice with grilled chicken and plantains',
-			price: '₦3,500',
+			name: 'Fried Rice',
+			description: 'Classic Nigerian fried rice with mixed vegetables',
+			category: 'Rice'
+		},
+		{
+			name: 'Jellof Rice',
+			description: 'Signature Nigerian jollof rice cooked in tomato sauce',
+			category: 'Rice'
+		},
+		{
+			name: 'Rice & Buka Stew',
+			description: 'White rice served with traditional buka stew',
+			category: 'Rice'
+		},
+		{
+			name: 'Pasta',
+			description: 'Nigerian-style pasta with rich tomato sauce',
 			category: 'Main Course'
 		},
 		{
-			name: 'Seafood Okra Soup',
-			description: 'Fresh okra soup with assorted seafood and traditional spices',
-			price: '₦4,200',
+			name: 'Goat Meat Pepper Soup',
+			description: 'Spicy pepper soup with tender goat meat',
 			category: 'Soups'
 		},
 		{
-			name: 'Suya Platter',
-			description: 'Spiced grilled beef with onions and tomatoes',
-			price: '₦3,800',
-			category: 'Appetizers'
+			name: 'Chicken Pepper Soup',
+			description: 'Traditional pepper soup with chicken',
+			category: 'Soups'
+		},
+		{
+			name: 'Cat Fish Pepper Soup',
+			description: 'Spicy catfish pepper soup with herbs',
+			category: 'Soups'
+		},
+		{
+			name: 'Asun',
+			description: 'Spicy grilled goat meat',
+			category: 'Main Course'
+		},
+		{
+			name: 'Peppered Chicken',
+			description: 'Grilled chicken with spicy pepper sauce',
+			category: 'Main Course'
+		},
+		{
+			name: 'Peppered Meat',
+			description: 'Spicy grilled beef',
+			category: 'Main Course'
+		},
+		{
+			name: 'Ewa Agoyin',
+			description: 'Mashed beans with special pepper sauce',
+			category: 'Main Course'
+		},
+		{
+			name: 'Yam & Sauce',
+			description: 'Boiled yam with egg sauce',
+			category: 'Yam'
+		},
+		{
+			name: 'Yam Porridge',
+			description: 'Yam porridge cooked with palm oil and spices',
+			category: 'Yam'
+		},
+		{
+			name: 'Chicken & Chips',
+			description: 'Fried chicken served with potato chips',
+			category: 'Main Course'
+		},
+		{
+			name: 'Salad',
+			description: 'Fresh vegetable salad with dressing',
+			category: 'Sides'
+		},
+		{
+			name: 'Edikaikong Soup',
+			description: 'Rich vegetable soup with assorted meat',
+			category: 'Soups'
+		},
+		{
+			name: 'Afang Soup',
+			description: 'Traditional soup made with afang leaves',
+			category: 'Soups'
+		},
+		{
+			name: 'Banga Soup',
+			description: 'Palm nut soup with assorted meat',
+			category: 'Soups'
+		},
+		{
+			name: 'Sea Food Okro Soup',
+			description: 'Okro soup with mixed seafood',
+			category: 'Soups'
 		},
 		{
 			name: 'Egusi Soup',
-			description: 'Traditional Nigerian soup made with ground melon seeds and vegetables',
-			price: '₦3,000',
+			description: 'Melon seed soup with vegetables',
 			category: 'Soups'
+		},
+		{
+			name: 'White Soup',
+			description: 'Traditional white soup with goat meat',
+			category: 'Soups'
+		},
+		{
+			name: 'Fried Fish',
+			description: 'Crispy fried fish with pepper sauce',
+			category: 'Main Course'
 		}
 	];
 
 	const categories = [...new Set(menuItems.map((item) => item.category))];
 </script>
 
-<div class="menu-page" in:fade={{ duration: 500 }}>
-	<header class="menu-header" in:fly={{ y: -20, duration: 600, delay: 200 }}>
-		<h1>Our Menu</h1>
-		<p>Experience authentic Nigerian cuisine with a modern twist</p>
-	</header>
+<Hero 
+	title="Our Menu"
+	subtitle="Discover our delicious Nigerian dishes made with love and tradition"
+	image="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&q=80"
+	cta={{ text: "Order Now", link: "/contact" }}
+	class="hero"
+/>
 
-	{#each categories as category}
-		<section class="menu-section" in:fly={{ y: 20, duration: 600, delay: 300 }}>
-			<h2>{category}</h2>
-			<div class="menu-grid">
-				{#each menuItems.filter((item) => item.category === category) as item}
-					<div class="menu-item">
-						<div class="menu-item-header">
-							<h3>{item.name}</h3>
-							<span class="price">{item.price}</span>
+<div class="menu-page bg-secondary" in:fade={{ duration: 500 }}>
+	<div class="container">
+		<header class="section-title" in:fly={{ y: -20, duration: 600, delay: 200 }}>
+			<h1 class="font-heading mb-4">Our Menu</h1>
+			<p class="text-secondary font-primary">Experience authentic Nigerian cuisine with a modern twist</p>
+		</header>
+
+		{#each categories as category}
+			<section class="menu-section" in:fly={{ y: 20, duration: 600, delay: 300 }}>
+				<h2 class="font-primary mb-4">{category}</h2>
+				<div class="menu-grid">
+					{#each menuItems.filter((item) => item.category === category) as item}
+						<div class="card menu-item">
+							<div class="menu-item-content">
+								<h3 class="font-primary mb-2 item-name">{item.name}</h3>
+								<p class="description text-secondary mb-3">{item.description}</p>
+								<a href="/contact" class="btn btn-primary">
+									<span>Order Now</span>
+									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										<line x1="5" y1="12" x2="19" y2="12"></line>
+										<polyline points="12 5 19 12 12 19"></polyline>
+									</svg>
+								</a>
+							</div>
 						</div>
-						<p>{item.description}</p>
-					</div>
-				{/each}
-			</div>
-		</section>
-	{/each}
+					{/each}
+				</div>
+			</section>
+		{/each}
+	</div>
 </div>
 
 <style lang="scss">
+	@import '../../styles/variables';
+
 	.menu-page {
-		padding: 2rem 0;
-	}
-
-	.menu-header {
-		text-align: center;
-		margin-bottom: 4rem;
-
-		h1 {
-			font-size: 3rem;
-			color: var(--secondary-color);
-			margin-bottom: 1rem;
-		}
-
-		p {
-			font-size: 1.2rem;
-			color: #666;
-		}
+		padding: $spacing-2xl 0;
+		min-height: 100vh;
+		background-color: $bg-secondary;
 	}
 
 	.menu-section {
-		margin-bottom: 3rem;
+		margin-bottom: $spacing-2xl;
 
 		h2 {
-			font-size: 2rem;
-			color: var(--primary-color);
-			margin-bottom: 2rem;
-			padding-bottom: 0.5rem;
-			border-bottom: 2px solid var(--primary-color);
+			position: relative;
+			color: $text-primary;
+			padding-bottom: $spacing-sm;
+			
+			&::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 60px;
+				height: 3px;
+				background-color: $primary-color;
+			}
 		}
 	}
 
 	.menu-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: $spacing-lg;
+		margin-top: $spacing-lg;
 	}
 
 	.menu-item {
-		background: white;
-		padding: 1.5rem;
-		border-radius: 10px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-		transition: transform 0.3s ease;
+		transition: all 0.3s ease;
+		cursor: pointer;
 
 		&:hover {
-			transform: translateY(-5px);
+			color: $primary-color;
+			transform: translateY(-2px);
 		}
 
-		.menu-item-header {
-			display: flex;
-			justify-content: space-between;
-			align-items: baseline;
-			margin-bottom: 0.5rem;
-
-			h3 {
-				font-size: 1.3rem;
-				color: var(--secondary-color);
-				margin: 0;
-			}
-
-			.price {
-				font-weight: bold;
-				color: var(--primary-color);
-			}
+		&.active {
+			color: $primary-color;
+			font-weight: 600;
 		}
 
-		p {
-			color: #666;
-			margin: 0;
-			font-size: 0.95rem;
+		.item-name {
+			font-size: $font-size-lg;
+			margin-bottom: $spacing-xs;
+			transition: color 0.3s ease;
+
+			&:hover {
+				color: $primary-color;
+			}
 		}
 	}
 
-	@media (max-width: 768px) {
-		.menu-header {
-			h1 {
-				font-size: 2.5rem;
+	.menu-item-content {
+		padding: $spacing-lg;
+
+		h3 {
+			color: $text-primary;
+			font-size: $font-size-xl;
+		}
+
+		.description {
+			font-size: $font-size-base;
+			min-height: 3rem;
+		}
+
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			gap: $spacing-xs;
+			background-color: $primary-color;
+			color: white;
+			padding: $spacing-sm $spacing-md;
+			border-radius: 4px;
+			text-decoration: none;
+			transition: background-color 0.2s ease;
+			
+			svg {
+				transition: transform $transition-fast;
 			}
+
+			&:hover {
+				background-color: $primary-dark;
+				
+				svg {
+					transform: translateX(4px);
+				}
+			}
+		}
+	}
+
+	@media (max-width: $breakpoint-md) {
+		.menu-page {
+			padding: $spacing-xl 0;
 		}
 
 		.menu-grid {
 			grid-template-columns: 1fr;
+			gap: $spacing-md;
 		}
+
+		.menu-item-content {
+			padding: $spacing-md;
+		}
+	}
+
+	.hero {
+		margin-bottom: $spacing-2xl;
 	}
 </style>

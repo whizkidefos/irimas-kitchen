@@ -1,153 +1,271 @@
-:root {
-    --primary-color: #FF6B35;
-    --secondary-color: #2E4052;
-    --accent-color: #FFD700;
-    --text-color: #2C3E50;
-    --background-color: #FFFFFF;
-    --header-height: 4rem;
-    --font-heading: 'Cormorant Garamond', serif;
-    --font-body: 'Lato', sans-serif;
-    --font-accent: 'Playfair Display', serif;
-    --max-width: 1400px;
-    --border-radius: 8px;
-    --transition: all 0.3s ease;
+@import 'variables';
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Satisfy&display=swap');
+
+// Reset and Base Styles
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $text-primary;
+  background-color: $bg-primary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Typography
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: $font-weight-bold;
+  line-height: $line-height-tight;
+  color: $text-primary;
+  margin-bottom: $spacing-md;
+  letter-spacing: $letter-spacing-tight;
+}
+
+h1 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-black;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-4xl;
   }
+}
+
+h2 {
+  font-size: $font-size-4xl;
   
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-3xl;
   }
+}
+
+h3 {
+  font-size: $font-size-3xl;
   
-  html {
-    scroll-behavior: smooth;
+  @media (max-width: $breakpoint-md) {
+    font-size: $font-size-2xl;
   }
-  
-  body {
-    font-family: var(--font-body);
-    line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--background-color);
-    overflow-x: hidden;
+}
+
+h4 {
+  font-size: $font-size-2xl;
+}
+
+h5 {
+  font-size: $font-size-xl;
+}
+
+h6 {
+  font-size: $font-size-lg;
+}
+
+p {
+  margin-bottom: $spacing-md;
+  line-height: $line-height-relaxed;
+}
+
+.font-heading {
+  font-family: $font-heading;
+}
+
+.font-primary {
+  font-family: $font-primary;
+}
+
+// Links
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $primary-light;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-    font-weight: 600;
-  }
-  
-  h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem);
-  }
-  
-  h2 {
-    font-size: clamp(2rem, 4vw, 3rem);
-  }
-  
-  h3 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-  }
-  
-  p {
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    line-height: 1.8;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-  }
-  
-  .container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 2rem;
-    width: 100%;
-  }
-  
-  .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: var(--border-radius);
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-  
+}
+
+// Buttons
+.btn {
+  display: inline-block;
+  padding: $spacing-sm $spacing-lg;
+  font-family: $font-primary;
+  font-weight: 700;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  border-radius: $border-radius-md;
+  transition: all $transition-normal;
+  cursor: pointer;
+  border: none;
+
+  &-primary {
+    background-color: $primary-color;
+    color: $text-light;
+
     &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      background-color: $primary-light;
     }
-  
-    &.btn-outline {
-      background: transparent;
-      border: 2px solid var(--primary-color);
-      color: var(--primary-color);
-  
-      &:hover {
-        background: var(--primary-color);
-        color: white;
-      }
+
+    &:active {
+      background-color: $primary-dark;
     }
   }
-  
-  .section {
-    padding: 6rem 0;
-    
-    &-title {
-      text-align: center;
-      margin-bottom: 4rem;
-  
-      h2 {
-        position: relative;
-        display: inline-block;
-        
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -10px;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 80px;
-          height: 3px;
-          background-color: var(--primary-color);
-        }
-      }
+
+  &-secondary {
+    background-color: $secondary-color;
+    color: $text-light;
+
+    &:hover {
+      background-color: $secondary-light;
+    }
+
+    &:active {
+      background-color: $secondary-dark;
     }
   }
-  
-  // Animations
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  .fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-  
-  // Responsive utilities
-  @media (max-width: 768px) {
-    .container {
-      padding: 0 1rem;
-    }
-  
-    .section {
-      padding: 4rem 0;
+
+  &-outline {
+    background-color: transparent;
+    border: 2px solid $primary-color;
+    color: $primary-color;
+
+    &:hover {
+      background-color: $primary-color;
+      color: $text-light;
     }
   }
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 0 $spacing-sm;
+  }
+}
+
+// Section
+.section {
+  padding: $spacing-3xl 0;
+
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-2xl 0;
+  }
+
+  &-title {
+    text-align: center;
+    margin-bottom: $spacing-2xl;
+
+    h2 {
+      margin-bottom: $spacing-sm;
+    }
+
+    p {
+      color: $text-secondary;
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+// Card
+.card {
+  background-color: $bg-primary;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  transition: transform $transition-normal, box-shadow $transition-normal;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Form Elements
+input, textarea, select {
+  width: 100%;
+  padding: $spacing-sm;
+  font-family: $font-primary;
+  font-size: $font-size-base;
+  border: 1px solid lighten($text-secondary, 30%);
+  border-radius: $border-radius-md;
+  transition: border-color $transition-fast;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+}
+
+// Utility Classes
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.font-accent {
+  font-family: $font-heading;
+}
+
+.text-primary { color: $primary-color; }
+.text-secondary { color: $secondary-color; }
+.text-light { color: $text-light; }
+
+.bg-primary { background-color: $primary-color; }
+.bg-secondary { background-color: $secondary-color; }
+.bg-accent { background-color: $bg-accent; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: $spacing-xs; }
+.mb-2 { margin-bottom: $spacing-sm; }
+.mb-3 { margin-bottom: $spacing-md; }
+.mb-4 { margin-bottom: $spacing-lg; }
+.mb-5 { margin-bottom: $spacing-xl; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: $spacing-xs; }
+.mt-2 { margin-top: $spacing-sm; }
+.mt-3 { margin-top: $spacing-md; }
+.mt-4 { margin-top: $spacing-lg; }
+.mt-5 { margin-top: $spacing-xl; }
+
+// Animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn $transition-normal;
+}
+
+.slide-up {
+  animation: slideUp $transition-normal;
+}

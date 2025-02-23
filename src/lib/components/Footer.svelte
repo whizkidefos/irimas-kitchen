@@ -24,6 +24,8 @@
 </footer>
 
 <style lang="scss">
+	@import '../../styles/variables';
+
 	footer {
 		background: #2c3e50;
 		color: white;
@@ -41,7 +43,7 @@
 
 		.footer-section {
 			h3 {
-				color: #e67e22;
+				color: $primary-color;
 				margin-bottom: 1rem;
 			}
 
@@ -50,7 +52,7 @@
 				text-decoration: none;
 
 				&:hover {
-					color: #e67e22;
+					color: $primary-color;
 				}
 			}
 		}

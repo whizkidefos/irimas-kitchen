@@ -107,62 +107,71 @@
 </section>
 
 <style lang="scss">
+	@import '../styles/variables';
+
 	section {
-		padding: 5rem 0;
+		padding: $spacing-3xl 0;
+
+		@media (max-width: $breakpoint-md) {
+			padding: $spacing-2xl 0;
+		}
 
 		h2 {
 			text-align: center;
-			font-size: 2.5rem;
-			color: var(--secondary-color);
-			margin-bottom: 3rem;
+			font-size: $font-size-4xl;
+			color: $text-primary;
+			margin-bottom: $spacing-2xl;
+			font-family: $font-primary;
 		}
 	}
 
 	.about-preview {
-		background-color: white;
+		background-color: $bg-primary;
 
 		.container {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			gap: 4rem;
+			gap: $spacing-2xl;
 			align-items: center;
 
-			@media (max-width: 768px) {
+			@media (max-width: $breakpoint-md) {
 				grid-template-columns: 1fr;
-				gap: 2rem;
+				gap: $spacing-lg;
 			}
 		}
 
 		.content {
 			h2 {
 				text-align: left;
-				margin-bottom: 1.5rem;
+				margin-bottom: $spacing-lg;
 			}
 
 			p {
-				margin-bottom: 2rem;
-				font-size: 1.1rem;
+				margin-bottom: $spacing-lg;
+				font-size: $font-size-lg;
 				line-height: 1.8;
-				color: #666;
+				color: $text-secondary;
 			}
 		}
 
 		.image {
 			img {
-				border-radius: 10px;
-				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+				border-radius: $border-radius-lg;
+				box-shadow: $shadow-lg;
+				width: 100%;
+				height: auto;
 			}
 		}
 	}
 
 	.services-preview {
-		background-color: #f8f9fa;
+		background-color: $bg-secondary;
 
 		.services-grid {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-			gap: 2rem;
-			margin-bottom: 3rem;
+			gap: $spacing-lg;
+			margin-bottom: $spacing-2xl;
 		}
 
 		.cta {
@@ -171,12 +180,12 @@
 	}
 
 	.testimonials {
-		background-color: white;
+		background-color: $bg-primary;
 
 		.testimonials-grid {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-			gap: 2rem;
+			gap: $spacing-lg;
 		}
 	}
 </style>
