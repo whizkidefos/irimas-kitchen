@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade, fly } from 'svelte/transition';
 	import Hero from '$lib/components/Hero.svelte';
+	import Seo from '$lib/components/SEO.svelte';
 
 	const heroData = {
 		title: "About Irima's Kitchen",
@@ -8,6 +9,12 @@
 		image: 'https://images.unsplash.com/photo-1581349485608-9469926a8e5e?auto=format&fit=crop&q=80'
 	};
 </script>
+
+<Seo
+	title="About Us | Irima's Kitchen - Learn More about Our Story"
+	description="Get to know more about Irima's Kitchen, our story, and our commitment to serving authentic Nigerian food."
+	keywords="about us, Irima's Kitchen, food, restaurant, authentic, Nigerian"
+/>
 
 <Hero {...heroData} />
 

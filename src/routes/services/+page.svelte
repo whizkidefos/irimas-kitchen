@@ -2,6 +2,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import Hero from '$lib/components/Hero.svelte';
 	import ServiceCard from '$lib/components/ServiceCard.svelte';
+	import Seo from '$lib/components/SEO.svelte';
 
 	const heroData = {
 		title: 'Our Services',
@@ -84,6 +85,14 @@
 		}
 	];
 </script>
+
+<Seo
+	title="Services | Irima's Kitchen - Expert Services"
+	description="Discover our range of services, from catering to cooking classes, and learn how we can enhance your dining experience."
+	keywords="services, catering, cooking classes, restaurant, food, expert, professional"
+	canonicalUrl="https://irimas-kitchen.vercel.app/services"
+	ogImage="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80"
+/>
 
 <Hero {...heroData} />
 

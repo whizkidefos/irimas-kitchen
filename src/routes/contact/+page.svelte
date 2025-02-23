@@ -2,6 +2,7 @@
 	import { fade, fly } from 'svelte/transition';
 	import Hero from '$lib/components/Hero.svelte';
 	import ContactForm from '$lib/components/ContactForm.svelte';
+	import Seo from '$lib/components/SEO.svelte';
 
 	const heroData = {
 		title: 'Contact Us',
@@ -56,6 +57,12 @@
 		}
 	];
 </script>
+
+<Seo
+	title="Contact Us | Irima's Kitchen - Get in Touch"
+	description="Get in touch with Irima's Kitchen to place an order or have questions about our menu. We'd love to hear from you!"
+	keywords="contact us, Irima's Kitchen, order, menu, food, drink"
+/>
 
 <Hero {...heroData} />
 
