@@ -109,7 +109,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../styles/variables';
+	@use '../../styles/variables' as *;
 
 	.contact-page {
 		background-color: $bg-secondary;
