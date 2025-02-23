@@ -103,7 +103,7 @@
 			color: v.$text-primary;
 		}
 
-		.item-description {
+		.description {
 			color: v.$text-secondary;
 			font-size: v.$font-size-base;
 		}
