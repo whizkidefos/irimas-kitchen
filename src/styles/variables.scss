@@ -1,7 +1,9 @@
+@use "sass:color";
+
 // Brand Colors
 $primary-color: #E65100;    // Deep Orange - Primary brand color
-$primary-light: #FF833A;    // Light Orange - Hover states
-$primary-dark: #AC1900;     // Dark Orange - Active states
+$primary-light: color.scale($primary-color, $lightness: 20%);    // Light Orange - Hover states
+$primary-dark: color.scale($primary-color, $lightness: -20%);     // Dark Orange - Active states
 
 $secondary-color: #2E7D32;  // Green - Secondary brand color
 $secondary-light: #60AD5E;  // Light Green
@@ -11,6 +13,7 @@ $secondary-dark: #005005;   // Dark Green
 $text-primary: #212121;     // Nearly Black - Primary text
 $text-secondary: #757575;   // Dark Gray - Secondary text
 $text-light: #FFFFFF;       // White - Text on dark backgrounds
+$text-lighter: color.scale($text-secondary, $lightness: 30%); // Lighter text color
 
 // Background Colors
 $bg-primary: #FFFFFF;       // White - Primary background

@@ -366,7 +366,7 @@
 			}
 
 			&:disabled {
-				background: lighten($text-secondary, 30%);
+				background: $text-lighter;
 				cursor: not-allowed;
 			}
 		}
