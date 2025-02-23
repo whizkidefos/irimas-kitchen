@@ -8,7 +8,8 @@
 		title: 'Contact Us',
 		subtitle: "Get in Touch with Irima's Kitchen",
 		image: 'https://images.unsplash.com/photo-1587560699334-cc4ff634909a?auto=format&fit=crop&q=80',
-		cta: { text: 'Place an Order', link: '#order-form' }
+		cta: { text: 'Place an Order', link: '#order-form' },
+		customClass: 'hero'
 	};
 
 	const contactInfo = [

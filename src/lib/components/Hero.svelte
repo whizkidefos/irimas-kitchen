@@ -6,13 +6,14 @@
 	export let subtitle: string;
 	export let image: string;
 	export let cta = { text: '', link: '' };
+	export let customClass: string;
   
 	let heroElement: HTMLElement;
 	let contentElement: HTMLElement;
 	let imageElement: HTMLElement;
 </script>
   
-<div class="hero" bind:this={heroElement}>
+<div class="hero {customClass}" bind:this={heroElement}>
 	<div 
 	  class="hero-background" 
 	  bind:this={imageElement}
@@ -44,7 +45,7 @@
 </div>
   
 <style lang="scss">
-	@import '../../styles/variables';
+	@use '../../styles/variables';
 
 	.hero {
 	  height: 100vh;

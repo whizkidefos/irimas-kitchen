@@ -9,6 +9,9 @@ export interface ContactFormData {
     email: string;
     subject: string;
     message: string;
+    isOrder: boolean;
+    selectedItems?: string[];
+    specialInstructions?: string;
 }
 
 export interface OrderFormData extends ContactFormData {

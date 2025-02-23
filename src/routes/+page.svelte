@@ -107,7 +107,7 @@
 </section>
 
 <style lang="scss">
-	@import '../styles/variables';
+	@use '../styles/variables';
 
 	section {
 		padding: $spacing-3xl 0;

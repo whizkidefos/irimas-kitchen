@@ -166,7 +166,7 @@
 </form>
 
 <style lang="scss">
-	@import '../../styles/variables';
+	@use '../../styles/variables';
 
 	.contact-form {
 		display: flex;

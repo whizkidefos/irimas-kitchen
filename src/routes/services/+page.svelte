@@ -7,7 +7,9 @@
 	const heroData = {
 		title: 'Our Services',
 		subtitle: 'Experience Excellence in Every Detail',
-		image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80'
+		image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80',
+		cta: { text: 'Book Now', link: '/contact' },
+		customClass: 'hero'
 	};
 
 	const services = [

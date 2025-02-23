@@ -24,7 +24,7 @@
 </footer>
 
 <style lang="scss">
-	@import '../../styles/variables';
+	@use '../../styles/variables';
 
 	footer {
 		background: #2c3e50;

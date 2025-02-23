@@ -6,7 +6,8 @@
 	const heroData = {
 		title: "About Irima's Kitchen",
 		subtitle: 'Our Journey Since 2019',
-		image: 'https://images.unsplash.com/photo-1581349485608-9469926a8e5e?auto=format&fit=crop&q=80'
+		image: 'https://images.unsplash.com/photo-1581349485608-9469926a8e5e?auto=format&fit=crop&q=80',
+		customClass: 'hero'
 	};
 </script>
 
