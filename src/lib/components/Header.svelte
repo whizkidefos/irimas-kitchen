@@ -66,7 +66,7 @@
 </header>
   
 <style lang="scss">
-  @use '../variables' as *;
+  @use '../../styles/variables' as *;
 
 	header {
 	  position: fixed;
