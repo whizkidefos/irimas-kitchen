@@ -2,7 +2,15 @@ import { json } from '@sveltejs/kit';
 import { Resend } from 'resend';
 import { ContactFormValidation, type ContactFormData } from '$lib/types/contact';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Lazy initialization of Resend to avoid build-time errors
+let resend: Resend | null = null;
+function getResend() {
+    if (!resend) {
+        const apiKey = process.env.RESEND_API_KEY || '';
+        resend = new Resend(apiKey);
+    }
+    return resend;
+}
 
 // Simple in-memory rate limiting
 const rateLimits = new Map<string, { count: number; timestamp: number }>();
@@ -73,7 +81,7 @@ export async function POST({ request, getClientAddress }) {
             <p>${message}</p>
         `;
 
-        await resend.emails.send({
+        await getResend().emails.send({
             from: process.env.EMAIL_FROM || 'Irima\'s Kitchen <contact@irimaskitchen.com>',
             to: process.env.EMAIL_TO || 'irimaskitchen@gmail.com',
             subject: `New ${isOrder ? 'Order' : 'Contact Form Submission'}: ${subject}`,
