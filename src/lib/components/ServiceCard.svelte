@@ -39,6 +39,8 @@
 </div>
 
 <style lang="scss">
+  @use '../../styles/variables' as *;
+
 	.service-card {
 		display: grid;
 		grid-template-columns: 1fr 1fr;

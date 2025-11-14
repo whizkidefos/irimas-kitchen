@@ -25,6 +25,8 @@
 </div>
 
 <style lang="scss">
+  @use '../../styles/variables' as *;
+
 	.service-preview {
 		background: white;
 		padding: 2rem;

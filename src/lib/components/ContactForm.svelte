@@ -166,60 +166,60 @@
 </form>
 
 <style lang="scss">
-	@use '../../styles/variables' as v;
+  @use '../../styles/variables' as *;
 
 	.contact-form {
 		display: flex;
 		flex-direction: column;
-		gap: v.$spacing-md;
+		gap: $spacing-md;
 		max-width: 600px;
 		margin: 0 auto;
-		padding: v.$spacing-lg;
-		background-color: v.$bg-primary;
-		border-radius: v.$border-radius-lg;
-		box-shadow: v.$shadow-md;
+		padding: $spacing-lg;
+		background-color: $bg-primary;
+		border-radius: $border-radius-lg;
+		box-shadow: $shadow-md;
 
 		.success-message {
-			background: v.$success;
-			color: v.$text-light;
-			padding: v.$spacing-md;
-			border-radius: v.$border-radius-md;
+			background: $success;
+			color: $text-light;
+			padding: $spacing-md;
+			border-radius: $border-radius-md;
 			text-align: center;
 		}
 
 		.error-message {
-			background: v.$error;
-			color: v.$text-light;
-			padding: v.$spacing-md;
-			border-radius: v.$border-radius-md;
+			background: $error;
+			color: $text-light;
+			padding: $spacing-md;
+			border-radius: $border-radius-md;
 			text-align: center;
 		}
 
 		.form-group {
 			display: flex;
 			flex-direction: column;
-			gap: v.$spacing-xs;
+			gap: $spacing-xs;
 
 			label {
 				font-weight: 600;
-				color: v.$text-primary;
+				color: $text-primary;
 			}
 
 			input,
 			textarea {
-				padding: v.$spacing-sm v.$spacing-md;
-				border: 1px solid v.$border-color;
-				border-radius: v.$border-radius-md;
-				font-family: v.$font-primary;
-				transition: border-color v.$transition-fast;
+				padding: $spacing-sm $spacing-md;
+				border: 1px solid $border-color;
+				border-radius: $border-radius-md;
+				font-family: $font-primary;
+				transition: border-color $transition-fast;
 
 				&:focus {
 					outline: none;
-					border-color: v.$primary-color;
+					border-color: $primary-color;
 				}
 
 				&:disabled {
-					background: v.$text-lighter;
+					background: $text-lighter;
 					cursor: not-allowed;
 				}
 			}
@@ -233,7 +233,7 @@
 		.checkbox-label {
 			display: flex;
 			align-items: center;
-			gap: v.$spacing-sm;
+			gap: $spacing-sm;
 			cursor: pointer;
 
 			input[type="checkbox"] {
@@ -243,46 +243,46 @@
 		}
 
 		.menu-selection {
-			margin: v.$spacing-md 0;
+			margin: $spacing-md 0;
 
 			h3 {
-				margin-bottom: v.$spacing-md;
-				color: v.$text-primary;
+				margin-bottom: $spacing-md;
+				color: $text-primary;
 			}
 
 			.category-section {
-				margin-bottom: v.$spacing-lg;
+				margin-bottom: $spacing-lg;
 
 				h4 {
-					margin-bottom: v.$spacing-sm;
-					color: v.$text-secondary;
+					margin-bottom: $spacing-sm;
+					color: $text-secondary;
 				}
 			}
 
 			.menu-items-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-				gap: v.$spacing-md;
+				gap: $spacing-md;
 			}
 
 			.menu-item-checkbox {
 				display: flex;
 				flex-direction: column;
-				gap: v.$spacing-xs;
-				padding: v.$spacing-md;
-				border: 1px solid v.$border-color;
-				border-radius: v.$border-radius-sm;
-				transition: all v.$transition-fast;
+				gap: $spacing-xs;
+				padding: $spacing-md;
+				border: 1px solid $border-color;
+				border-radius: $border-radius-sm;
+				transition: all $transition-fast;
 				cursor: pointer;
 
 				&:hover {
-					background-color: v.$bg-secondary;
+					background-color: $bg-secondary;
 				}
 
 				.checkbox-row {
 					display: flex;
 					align-items: flex-start;
-					gap: v.$spacing-sm;
+					gap: $spacing-sm;
 
 					input[type="checkbox"] {
 						margin-top: 0.3rem;
@@ -292,22 +292,22 @@
 
 					.item-name {
 						font-weight: 600;
-						color: v.$text-primary;
-						line-height: v.$line-height-normal;
+						color: $text-primary;
+						line-height: $line-height-normal;
 					}
 				}
 
 				.item-description {
-					font-size: v.$font-size-sm;
-					color: v.$text-secondary;
-					line-height: v.$line-height-normal;
+					font-size: $font-size-sm;
+					color: $text-secondary;
+					line-height: $line-height-normal;
 				}
 			}
 		}
 
 		.alert {
-			padding: v.$spacing-sm v.$spacing-md;
-			border-radius: v.$border-radius-md;
+			padding: $spacing-sm $spacing-md;
+			border-radius: $border-radius-md;
 			font-weight: 500;
 
 			&.alert-error {
@@ -322,23 +322,23 @@
 		}
 
 		button {
-			background: v.$primary-color;
-			color: v.$text-light;
-			padding: v.$spacing-md v.$spacing-lg;
+			background: $primary-color;
+			color: $text-light;
+			padding: $spacing-md $spacing-lg;
 			border: none;
-			border-radius: v.$border-radius-md;
-			font-family: v.$font-primary;
+			border-radius: $border-radius-md;
+			font-family: $font-primary;
 			font-weight: 700;
-			font-size: v.$font-size-base;
+			font-size: $font-size-base;
 			cursor: pointer;
-			transition: background-color v.$transition-fast;
+			transition: background-color $transition-fast;
 
 			&:hover:not(:disabled) {
-				background: v.$primary-dark;
+				background: $primary-dark;
 			}
 
 			&:disabled {
-				background: v.$text-lighter;
+				background: $text-lighter;
 				cursor: not-allowed;
 			}
 		}

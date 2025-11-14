@@ -105,8 +105,9 @@
 </div>
 
 <style lang="scss">
-    @use '../../styles/variables' as *;
-	.services-container {
+  @use '../../styles/variables' as *;
+
+  .services-container {
 		max-width: 1200px;
 		margin: 4rem auto;
 		padding: 0 1rem;

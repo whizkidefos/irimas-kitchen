@@ -58,8 +58,9 @@
 </div>
 
 <style lang="scss">
-    @use '../../styles/variables' as *;
-	.about-content {
+  @use '../../styles/variables' as *;
+
+  .about-content {
 		max-width: 800px;
 		margin: 4rem auto;
 		padding: 0 1rem;

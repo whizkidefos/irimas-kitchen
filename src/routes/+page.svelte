@@ -34,14 +34,14 @@
 
 	const testimonials = [
 		{
-			name: 'Sarah Johnson',
+			name: 'Sarah Ademola',
 			role: 'Event Planner',
 			content: 'The catering service was exceptional. Every detail was perfect!',
 			image:
 				'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80'
 		},
 		{
-			name: 'Michael Chen',
+			name: 'Michael Ojiaku',
 			role: 'Food Critic',
 			content: 'A true gem in Lagos. The fusion of flavors is outstanding.',
 			image:
@@ -107,7 +107,7 @@
 </section>
 
 <style lang="scss">
-	@use '../styles/variables';
+  @use '../styles/variables' as *;
 
 	section {
 		padding: $spacing-3xl 0;

@@ -45,7 +45,7 @@
 </div>
   
 <style lang="scss">
-	@use '../../styles/variables';
+  @use '../../styles/variables' as *;
 
 	.hero {
 	  height: 100vh;

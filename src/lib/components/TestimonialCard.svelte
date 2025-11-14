@@ -30,6 +30,8 @@
 </div>
 
 <style lang="scss">
+  @use '../../styles/variables' as *;
+
 	.testimonial-card {
 		background: white;
 		padding: 2rem;

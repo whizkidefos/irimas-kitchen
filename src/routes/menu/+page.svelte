@@ -67,51 +67,89 @@
 </div>
 
 <style lang="scss">
-	@use '../../styles/variables' as v;
+  @use '../../styles/variables' as *;
 
 	.menu-page {
-		padding: v.$spacing-2xl 0;
+		padding: $spacing-2xl 0;
+		background-color: $bg-secondary;
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 $spacing-md;
+		}
 	}
 
-	.menu-section {
-		margin-bottom: v.$spacing-2xl;
+	.menu-header {
+		text-align: center;
+		margin-bottom: $spacing-2xl;
+
+		h1 {
+			font-family: $font-heading;
+			font-size: $font-size-4xl;
+			color: $text-primary;
+			margin-bottom: $spacing-md;
+		}
+
+		p {
+			font-size: $font-size-lg;
+			color: $text-secondary;
+			max-width: 600px;
+			margin: 0 auto;
+		}
 	}
 
 	.menu-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-		gap: v.$spacing-lg;
-		padding: v.$spacing-md;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: $spacing-lg;
+		margin-top: $spacing-xl;
+	}
+
+	.menu-category {
+		margin-bottom: $spacing-2xl;
+
+		&:last-child {
+			margin-bottom: 0;
+		}
+
+		h2 {
+			font-family: $font-heading;
+			font-size: $font-size-2xl;
+			color: $text-primary;
+			margin-bottom: $spacing-lg;
+			text-align: center;
+		}
 	}
 
 	.menu-item {
-		background: v.$bg-primary;
-		padding: v.$spacing-lg;
-		border-radius: v.$border-radius-lg;
-		box-shadow: v.$shadow-md;
-		transition: transform v.$transition-normal, box-shadow v.$transition-normal;
+		background-color: $bg-primary;
+		padding: $spacing-lg;
+		border-radius: $border-radius-md;
+		box-shadow: $shadow-sm;
+		transition: transform $transition-fast, box-shadow $transition-fast;
 
 		&:hover {
 			transform: translateY(-2px);
-			box-shadow: v.$shadow-lg;
+			box-shadow: $shadow-md;
 		}
 
-		.item-name {
-			font-family: v.$font-heading;
-			font-size: v.$font-size-lg;
-			margin-bottom: v.$spacing-xs;
-			color: v.$text-primary;
+		h3 {
+			font-family: $font-heading;
+			font-size: $font-size-lg;
+			color: $text-primary;
+			margin-bottom: $spacing-xs;
 		}
 
-		.description {
-			color: v.$text-secondary;
-			font-size: v.$font-size-base;
+		p {
+			font-size: $font-size-base;
+			color: $text-secondary;
+			margin-bottom: $spacing-sm;
 		}
-	}
 
-	@media (max-width: v.$breakpoint-sm) {
-		.menu-grid {
-			grid-template-columns: 1fr;
+		.price {
+			font-weight: $font-weight-bold;
+			color: $primary-color;
 		}
 	}
 </style>

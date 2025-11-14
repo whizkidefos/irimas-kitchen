@@ -110,9 +110,9 @@
 </div>
 
 <style lang="scss">
-	@use '../../styles/variables' as *;
+  @use '../../styles/variables' as *;
 
-	.contact-page {
+  .contact-page {
 		background-color: $bg-secondary;
 		padding: $spacing-2xl 0;
 	}

@@ -28,6 +28,8 @@
 </div>
 
 <style lang="scss">
+  @use '../styles/variables.scss' as *;
+
 	.app {
 		display: flex;
 		flex-direction: column;
@@ -36,15 +38,41 @@
 
 	main {
 		flex: 1;
-		margin-top: clamp(2rem, 4vw, 4rem); // Responsive margin
-		padding: clamp(1rem, 2vw, 2rem); // Responsive padding
 		width: 100%;
-		margin-left: auto;
-		margin-right: auto;
-		
-		@media (max-width: 768px) {
-			margin-top: 2rem;
-			padding: 1rem;
+		margin: 0 auto;
+		box-sizing: border-box;
+		font-family: $font-primary;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $font-heading;
+		color: $text-primary;
+		margin: 0;
+	}
+
+	p {
+		color: $text-secondary;
+		line-height: $line-height-normal;
+		margin: 0;
+	}
+
+	a {
+		color: $primary-color;
+		text-decoration: none;
+		transition: color $transition-fast;
+
+		&:hover {
+			color: $primary-dark;
 		}
+	}
+
+	button {
+		font-family: $font-primary;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 $spacing-md;
 	}
 </style>
